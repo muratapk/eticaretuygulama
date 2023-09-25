@@ -65,6 +65,7 @@ namespace eticaretuygulamasi.Controllers
             //burada dosyanı uzantısı aldık
             var randomName = Guid.NewGuid().ToString() + extension;
             var yol = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/resimler", randomName);
+
             using (var stream = new FileStream(yol, FileMode.Create))
             {
                 await resimyukle.CopyToAsync(stream);
@@ -74,13 +75,13 @@ namespace eticaretuygulamasi.Controllers
 
 
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName", product.CategoryId);
+           
             return View(product);
         }
 

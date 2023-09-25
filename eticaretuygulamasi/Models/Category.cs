@@ -6,9 +6,9 @@ namespace eticaretuygulamasi.Models
     {
         [Key]
         public int CategoryId { get; set; }
-        public string  CategoryName { get; set; }
+        public string?  CategoryName { get; set; }
 
-        public  virtual List<Product> Procudts { get; set; }
+        public  virtual List<Product>? Procudts { get; set; }
 
     }
 }

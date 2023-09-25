@@ -1,5 +1,6 @@
 ﻿using eticaretuygulamasi.Context;
 using eticaretuygulamasi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +14,7 @@ namespace eticaretuygulamasi.Controllers
         {
             _context = context;
         }
+        [Authorize]
         public ActionResult Index()
         {
             var listem = _context.Admins.ToList();
